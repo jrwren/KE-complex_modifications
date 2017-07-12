@@ -1,0 +1,41 @@
+{
+    "title": "tab as esc",
+    "rules": [
+        {
+            "description": "Press tab alone produces esc",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": <%= from("tab", [], []) %>,
+                    "to": <%= to([["tab"]]) %>,
+                    "to_if_alone": <%= to([["escape"]]) %>
+                }
+            ]
+        },
+        {
+            "description": "Press ctrl-i produces tab. use shift-ctrl-i for ctrl-i",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": <%= from("i", ["ctrl"], []) %>,
+                    "to": <%= to([["tab"]]) %>
+                },
+                {
+                    "type": "basic",
+                    "from": <%= from("tab", ["shift","ctrl"], []) %>,
+                    "to": <%= to([["ctrl","i"]]) %>
+                }
+            ]
+        },
+        {
+            "description": "Press ctrl-tab produces esc",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": <%= from("tab", ["ctrl"], []) %>,
+                    "to": <%= to([["escape"]]) %>
+                }
+            ]
+        }
+    ]
+}
